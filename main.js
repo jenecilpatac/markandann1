@@ -110,8 +110,191 @@ function initPetals() {
 initPetals()
 window.addEventListener('resize', initPetals)
 
+// ===== Groom (Mechanical Engineer) & Bride (Hotelier) glimpse icons =====
+// A quiet nod to what Mark & Ann do — a handful of gears, wrenches and bolts
+// (engineering) drifting alongside a bellhop bell, room key and luggage
+// (hospitality), mixed in with the petals at a very low opacity.
+const iconPalette = {
+  engineer: ['rgba(168, 137, 80, 0.35)', 'rgba(201, 169, 110, 1)'],
+  hotel: ['rgba(168, 103, 126, 0.3)', 'rgba(201, 137, 159, 1)'],
+}
+const iconKinds = [
+  { kind: 'gear', group: 'engineer' },
+  { kind: 'wrench', group: 'engineer' },
+  { kind: 'bolt', group: 'engineer' },
+  { kind: 'bell', group: 'hotel' },
+  { kind: 'key', group: 'hotel' },
+  { kind: 'luggage', group: 'hotel' },
+]
+
+function drawGear(c, s) {
+  const teeth = 8
+  const outerR = s
+  const innerR = s * 0.62
+  const holeR = s * 0.28
+  c.beginPath()
+  for (let i = 0; i < teeth * 2; i++) {
+    const r = i % 2 === 0 ? outerR : innerR
+    const a = (Math.PI / teeth) * i
+    const x = Math.cos(a) * r
+    const y = Math.sin(a) * r
+    if (i === 0) c.moveTo(x, y)
+    else c.lineTo(x, y)
+  }
+  c.closePath()
+  c.stroke()
+  c.beginPath()
+  c.arc(0, 0, holeR, 0, Math.PI * 2)
+  c.stroke()
+}
+
+function drawWrench(c, s) {
+  c.beginPath()
+  c.moveTo(-s * 0.9, s * 0.9)
+  c.lineTo(s * 0.35, -s * 0.35)
+  c.stroke()
+  c.beginPath()
+  c.arc(-s * 0.9, s * 0.9, s * 0.32, Math.PI * 0.15, Math.PI * 1.15)
+  c.stroke()
+  c.beginPath()
+  c.arc(s * 0.55, -s * 0.55, s * 0.4, Math.PI * 0.75, Math.PI * 1.85)
+  c.stroke()
+}
+
+function drawBolt(c, s) {
+  c.beginPath()
+  for (let i = 0; i < 6; i++) {
+    const a = (Math.PI / 3) * i - Math.PI / 6
+    const x = Math.cos(a) * s
+    const y = Math.sin(a) * s
+    if (i === 0) c.moveTo(x, y)
+    else c.lineTo(x, y)
+  }
+  c.closePath()
+  c.stroke()
+  c.beginPath()
+  c.arc(0, 0, s * 0.42, 0, Math.PI * 2)
+  c.stroke()
+}
+
+function drawBell(c, s) {
+  c.beginPath()
+  c.arc(0, s * 0.1, s * 0.85, Math.PI, 0, false)
+  c.lineTo(s * 0.85, s * 0.45)
+  c.lineTo(-s * 0.85, s * 0.45)
+  c.closePath()
+  c.stroke()
+  c.beginPath()
+  c.moveTo(-s * 1.05, s * 0.45)
+  c.lineTo(s * 1.05, s * 0.45)
+  c.stroke()
+  c.beginPath()
+  c.arc(0, -s * 0.95, s * 0.14, 0, Math.PI * 2)
+  c.stroke()
+}
+
+function drawKey(c, s) {
+  c.beginPath()
+  c.arc(-s * 0.55, 0, s * 0.45, 0, Math.PI * 2)
+  c.stroke()
+  c.beginPath()
+  c.moveTo(-s * 0.1, 0)
+  c.lineTo(s * 0.95, 0)
+  c.stroke()
+  c.beginPath()
+  c.moveTo(s * 0.6, 0)
+  c.lineTo(s * 0.6, s * 0.32)
+  c.moveTo(s * 0.9, 0)
+  c.lineTo(s * 0.9, s * 0.32)
+  c.stroke()
+}
+
+function drawLuggage(c, s) {
+  c.strokeRect(-s * 0.85, -s * 0.55, s * 1.7, s * 1.1)
+  c.beginPath()
+  c.moveTo(-s * 0.35, -s * 0.55)
+  c.lineTo(-s * 0.35, -s * 0.85)
+  c.lineTo(s * 0.35, -s * 0.85)
+  c.lineTo(s * 0.35, -s * 0.55)
+  c.stroke()
+  c.beginPath()
+  c.moveTo(0, -s * 0.55)
+  c.lineTo(0, s * 0.55)
+  c.stroke()
+}
+
+const iconDrawers = {
+  gear: drawGear,
+  wrench: drawWrench,
+  bolt: drawBolt,
+  bell: drawBell,
+  key: drawKey,
+  luggage: drawLuggage,
+}
+
+class GlimpseIcon {
+  constructor() {
+    this.reset()
+    this.y = Math.random() * canvas.height
+  }
+
+  reset() {
+    const def = iconKinds[Math.floor(Math.random() * iconKinds.length)]
+    this.kind = def.kind
+    this.group = def.group
+    this.color = iconPalette[def.group][Math.floor(Math.random() * iconPalette[def.group].length)]
+    this.x = Math.random() * canvas.width
+    this.y = -30
+    this.size = Math.random() * 14 + 20
+    this.speedY = Math.random() * 0.35 + 0.15
+    this.speedX = Math.random() * 0.3 - 0.15
+    this.angle = Math.random() * Math.PI * 2
+    this.angleSpeed = (Math.random() * 0.006 - 0.003)
+    this.swayAmplitude = Math.random() * 1.2 + 0.4
+    this.swayOffset = Math.random() * Math.PI * 2
+  }
+
+  update(time) {
+    this.y += this.speedY
+    this.x += this.speedX + Math.sin(time * 0.0006 + this.swayOffset) * this.swayAmplitude * 0.25
+    this.angle += this.angleSpeed
+
+    if (this.y > canvas.height + 30) {
+      this.reset()
+    }
+  }
+
+  draw() {
+    ctx.save()
+    ctx.translate(this.x, this.y)
+    ctx.rotate(this.angle)
+    ctx.strokeStyle = this.color
+    ctx.lineWidth = 1.4
+    ctx.lineCap = 'round'
+    ctx.lineJoin = 'round'
+    iconDrawers[this.kind](ctx, this.size)
+    ctx.restore()
+  }
+}
+
+let glimpseIcons = []
+function initGlimpseIcons() {
+  // Kept deliberately sparse — a quiet glimpse, not a pattern.
+  const count = Math.min(9, Math.max(4, Math.floor(window.innerWidth / 190)))
+  glimpseIcons = []
+  for (let i = 0; i < count; i++) {
+    glimpseIcons.push(new GlimpseIcon())
+  }
+}
+initGlimpseIcons()
+window.addEventListener('resize', initGlimpseIcons)
+
 function animatePetals(time) {
   ctx.clearRect(0, 0, canvas.width, canvas.height)
+  glimpseIcons.forEach((icon) => {
+    icon.update(time)
+    icon.draw()
+  })
   petals.forEach((p) => {
     p.update(time)
     p.draw()
