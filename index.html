@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="data:," />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mark &amp; Ann — Our Wedding</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <meta property="og:image" content="https://bolt.new/static/og_default.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://bolt.new/static/og_default.png">
+</head>
+  <body>
+    <!-- Invitation Envelope Overlay -->
+    <div id="envelope-overlay" class="envelope-overlay">
+      <div class="envelope-scene">
+        <div class="envelope-glow"></div>
+        <div id="envelope" class="envelope">
+          <div class="envelope-back">
+            <div class="envelope-letter">
+              <p class="letter-eyebrow">Together with their families</p>
+              <h2 class="letter-names">Mark &amp; Ann</h2>
+              <p class="letter-invite">request the pleasure of your company as they exchange their vows</p>
+              <div class="letter-divider">
+                <span class="line"></span>
+                <span class="diamond">❦</span>
+                <span class="line"></span>
+              </div>
+              <p class="letter-date">February 14, 2026 · Tuscany, Italy</p>
+            </div>
+          </div>
+          <div class="envelope-front">
+            <div class="envelope-pocket-left"></div>
+            <div class="envelope-pocket-right"></div>
+            <div class="envelope-pocket-bottom"></div>
+          </div>
+          <div id="envelope-flap" class="envelope-flap">
+            <div class="wax-seal" id="wax-seal">
+              <span class="seal-monogram">M&amp;A</span>
+            </div>
+          </div>
+        </div>
+        <p class="envelope-hint" id="envelope-hint">Tap to open your invitation</p>
+      </div>
+    </div>
+
+    <div id="app">
+      <!-- Falling petals canvas -->
+      <canvas id="petals"></canvas>
+
+      <!-- Music toggle -->
+      <button id="music-toggle" class="music-toggle" aria-label="Toggle music">
+        <span class="music-icon">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18V5l12-2v13" />
+            <circle cx="6" cy="18" r="3" />
+            <circle cx="18" cy="16" r="3" />
+          </svg>
+        </span>
+        <span class="music-bars">
+          <span></span><span></span><span></span><span></span>
+        </span>
+      </button>
+
+      <!-- Navigation -->
+      <nav id="nav" class="nav">
+        <a href="#hero" class="nav-logo">M &amp; A</a>
+        <div class="nav-links">
+          <a href="#story">Our Story</a>
+          <a href="#details">Details</a>
+          <a href="#countdown">Countdown</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#gifts">Gifts</a>
+          <a href="#rsvp">RSVP</a>
+        </div>
+      </nav>
+
+      <!-- Hero -->
+      <section id="hero" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content reveal">
+          <p class="hero-pretitle">We're getting married</p>
+          <h1 class="hero-names">Mark &amp; Ann</h1>
+          <div class="hero-divider">
+            <span class="line"></span>
+            <span class="diamond">❦</span>
+            <span class="line"></span>
+          </div>
+          <p class="hero-date">Saturday, the 14th of February, 2026</p>
+          <p class="hero-location">Rosewood Garden Estate · Tuscany, Italy</p>
+          <a href="#rsvp" class="hero-cta">RSVP Now</a>
+        </div>
+        <div class="scroll-hint">
+          <span>Scroll</span>
+          <span class="scroll-line"></span>
+        </div>
+      </section>
+
+      <!-- Our Story -->
+      <section id="story" class="story section">
+        <div class="section-header reveal">
+          <p class="eyebrow">Once upon a time</p>
+          <h2 class="section-title">Our Love Story</h2>
+        </div>
+        <div class="story-timeline">
+          <div class="story-card reveal">
+            <div class="story-image">
+              <img src="https://images.pexels.com/photos/16189171/pexels-photo-16189171.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Bride holding a bouquet" loading="lazy" />
+            </div>
+            <div class="story-text">
+              <span class="story-year">2019</span>
+              <h3>How We Met</h3>
+              <p>It began with a chance encounter at a little bookshop in Florence. Mark reached for the same novel as Ann, and a shared laugh turned into a shared coffee — then a shared life.</p>
+            </div>
+          </div>
+          <div class="story-card reverse reveal">
+            <div class="story-image">
+              <img src="https://images.pexels.com/photos/30891127/pexels-photo-30891127.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Pink rose bouquet" loading="lazy" />
+            </div>
+            <div class="story-text">
+              <span class="story-year">2022</span>
+              <h3>The Proposal</h3>
+              <p>Under a canopy of wisteria at sunset, Mark knelt on one knee with a ring and a trembling voice. Ann said yes before he could finish the question.</p>
+            </div>
+          </div>
+          <div class="story-card reveal">
+            <div class="story-image">
+              <img src="https://images.pexels.com/photos/31517332/pexels-photo-31517332.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Wedding aisle with white roses" loading="lazy" />
+            </div>
+            <div class="story-text">
+              <span class="story-year">2026</span>
+              <h3>Forever Begins</h3>
+              <p>Surrounded by family and friends, in a garden blooming with roses, we will promise each other forever. And you are invited to witness the magic.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Details -->
+      <section id="details" class="details section">
+        <div class="section-header reveal">
+          <p class="eyebrow">Join us</p>
+          <h2 class="section-title">Wedding Details</h2>
+        </div>
+        <div class="details-grid">
+          <div class="detail-card reveal">
+            <div class="detail-icon">
+              <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+            </div>
+            <h3>The Ceremony</h3>
+            <p class="detail-time">2:00 PM</p>
+            <p>Rosewood Garden Chapel</p>
+            <p>Via dei Fiori 12, Tuscany</p>
+          </div>
+          <div class="detail-card reveal">
+            <div class="detail-icon">
+              <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8h1a4 4 0 0 1 0 8h-1" />
+                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" />
+                <line x1="6" y1="1" x2="6" y2="4" />
+                <line x1="10" y1="1" x2="10" y2="4" />
+                <line x1="14" y1="1" x2="14" y2="4" />
+              </svg>
+            </div>
+            <h3>The Reception</h3>
+            <p class="detail-time">5:00 PM</p>
+            <p>Rosewood Garden Terrace</p>
+            <p>Dinner, dancing &amp; celebration</p>
+          </div>
+          <div class="detail-card reveal">
+            <div class="detail-icon">
+              <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+              </svg>
+            </div>
+            <h3>The Date</h3>
+            <p class="detail-time">February 14, 2026</p>
+            <p>Saturday afternoon</p>
+            <p>Valentine's Day</p>
+          </div>
+          <div class="detail-card reveal">
+            <div class="detail-icon">
+              <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+              </svg>
+            </div>
+            <h3>Dress Code</h3>
+            <p class="detail-time">Garden Formal</p>
+            <p>Soft pastels &amp; floral tones</p>
+            <p>Comfortable shoes recommended</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Countdown -->
+      <section id="countdown" class="countdown-section section">
+        <div class="countdown-overlay"></div>
+        <div class="countdown-content reveal">
+          <p class="eyebrow light">The countdown begins</p>
+          <h2 class="section-title light">Until We Say "I Do"</h2>
+          <div class="countdown-timer" id="countdown-timer">
+            <div class="count-unit">
+              <span class="count-num" id="days">0</span>
+              <span class="count-label">Days</span>
+            </div>
+            <div class="count-sep">:</div>
+            <div class="count-unit">
+              <span class="count-num" id="hours">0</span>
+              <span class="count-label">Hours</span>
+            </div>
+            <div class="count-sep">:</div>
+            <div class="count-unit">
+              <span class="count-num" id="minutes">0</span>
+              <span class="count-label">Minutes</span>
+            </div>
+            <div class="count-sep">:</div>
+            <div class="count-unit">
+              <span class="count-num" id="seconds">0</span>
+              <span class="count-label">Seconds</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Gallery -->
+      <section id="gallery" class="gallery section">
+        <div class="section-header reveal">
+          <p class="eyebrow">Moments</p>
+          <h2 class="section-title">Our Gallery</h2>
+        </div>
+        <div class="gallery-grid">
+          <div class="gallery-item reveal" data-tilt>
+            <img src="https://images.pexels.com/photos/16189171/pexels-photo-16189171.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Bride with bouquet" loading="lazy" />
+          </div>
+          <div class="gallery-item reveal" data-tilt>
+            <img src="https://images.pexels.com/photos/17023148/pexels-photo-17023148.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Wedding table with candles" loading="lazy" />
+          </div>
+          <div class="gallery-item reveal" data-tilt>
+            <img src="https://images.pexels.com/photos/30891127/pexels-photo-30891127.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Pink rose bouquet" loading="lazy" />
+          </div>
+          <div class="gallery-item reveal" data-tilt>
+            <img src="https://images.pexels.com/photos/15530615/pexels-photo-15530615.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Outdoor wedding reception" loading="lazy" />
+          </div>
+          <div class="gallery-item reveal" data-tilt>
+            <img src="https://images.pexels.com/photos/31517332/pexels-photo-31517332.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Wedding aisle with roses" loading="lazy" />
+          </div>
+          <div class="gallery-item reveal" data-tilt>
+            <img src="https://images.pexels.com/photos/15527031/pexels-photo-15527031.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Luxurious table setting with candles" loading="lazy" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Gifts -->
+      <section id="gifts" class="gifts-section section">
+        <div class="section-header reveal">
+          <p class="eyebrow">With gratitude</p>
+          <h2 class="section-title">Gifts &amp; Registries</h2>
+          <p class="gifts-intro">Your presence is the greatest gift of all. But for those who wish to celebrate with something more, here are a few ways to spoil us.</p>
+        </div>
+
+        <div class="gifts-grid">
+    
+          <!-- Charity Donation -->
+          <div class="gift-card reveal">
+            <div class="gift-icon">
+              <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+              </svg>
+            </div>
+            <h3>Donate to Charity</h3>
+            <p class="gift-desc">In lieu of a gift, consider a donation to a cause close to our hearts — the Bloom Garden Foundation.</p>
+            <button class="gift-btn" data-modal="charity-modal">Learn More</button>
+          </div>
+        </div>
+
+        <div class="gifts-note reveal">
+          <span class="gifts-note-icon">❦</span>
+          <p>Please don't feel obligated — your love and presence on our special day is truly all we need.</p>
+        </div>
+      </section>
+
+      <!-- RSVP -->
+      <section id="rsvp" class="rsvp-section section">
+        <div class="section-header reveal">
+          <p class="eyebrow">Be our guest</p>
+          <h2 class="section-title">RSVP</h2>
+          <p class="rsvp-subtitle">Kindly respond by January 15th, 2026</p>
+        </div>
+        <div class="rsvp-form-wrap reveal">
+          <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLSfAKSExampleReplaceWithYourFormID/viewform?embedded=true"
+            width="100%"
+            height="900"
+            frameborder="0"
+            marginheight="0"
+            marginwidth="0"
+            class="rsvp-iframe"
+            title="RSVP Form"
+          >
+            Loading…
+          </iframe>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="footer-content">
+          <h3 class="footer-names">Mark &amp; Ann</h3>
+          <p class="footer-date">February 14, 2026 · Tuscany, Italy</p>
+          <div class="footer-divider">
+            <span class="line"></span>
+            <span class="diamond">❦</span>
+            <span class="line"></span>
+          </div>
+          <p class="footer-quote">"And they lived happily ever after…"</p>
+          <p class="footer-credit">Made with love</p>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Honeymoon Modal -->
+    <div class="modal-overlay" id="honeymoon-modal">
+      <div class="modal">
+        <button class="modal-close" aria-label="Close">&times;</button>
+        <h3 class="modal-title">Honeymoon Fund</h3>
+        <p class="modal-text">Thank you for contributing to our dream honeymoon along the Amalfi Coast! You can send your gift via bank transfer to the account below.</p>
+        <div class="bank-details">
+          <div class="bank-row">
+            <span class="bank-label">Account Name</span>
+            <span class="bank-value">Mark &amp; Ann Wedding</span>
+            <button class="copy-btn" data-copy="Mark &amp; Ann Wedding">Copy</button>
+          </div>
+          <div class="bank-row">
+            <span class="bank-label">IBAN</span>
+            <span class="bank-value">IT60 X054 2811 0100 0000 1234 567</span>
+            <button class="copy-btn" data-copy="IT60 X054 2811 0100 0000 1234 567">Copy</button>
+          </div>
+          <div class="bank-row">
+            <span class="bank-label">BIC / SWIFT</span>
+            <span class="bank-value">ITGLITMMXXX</span>
+            <button class="copy-btn" data-copy="ITGLITMMXXX">Copy</button>
+          </div>
+        </div>
+        <p class="modal-hint">Or contribute securely online via our fund page.</p>
+        <a href="#" class="modal-link">Contribute Online →</a>
+      </div>
+    </div>
+
+    <!-- Charity Modal -->
+    <div class="modal-overlay" id="charity-modal">
+      <div class="modal">
+        <button class="modal-close" aria-label="Close">&times;</button>
+        <h3 class="modal-title">Bloom Garden Foundation</h3>
+        <p class="modal-text">The Bloom Garden Foundation plants community gardens in underserved neighborhoods, bringing green spaces and fresh produce to those who need it most. A cause that perfectly reflects where our love story began — in a garden.</p>
+        <div class="charity-stats">
+          <div class="charity-stat">
+            <span class="charity-stat-num">120+</span>
+            <span class="charity-stat-label">Gardens Planted</span>
+          </div>
+          <div class="charity-stat">
+            <span class="charity-stat-num">15k</span>
+            <span class="charity-stat-label">People Helped</span>
+          </div>
+          <div class="charity-stat">
+            <span class="charity-stat-num">€250k</span>
+            <span class="charity-stat-label">Raised Last Year</span>
+          </div>
+        </div>
+        <a href="#" class="modal-link">Donate to Bloom Garden →</a>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
