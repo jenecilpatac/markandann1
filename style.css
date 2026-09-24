@@ -52,7 +52,7 @@ body {
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background: linear-gradient(135deg, #f7efe6 0%, #f4dede 50%, #e8c5c5 100%);
+  background: linear-gradient(135deg, #fdf8f3 0%, #f4dede 45%, #e0b7c1 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -93,8 +93,8 @@ body {
 
 .envelope {
   position: relative;
-  width: 360px;
-  height: 240px;
+  width: 440px;
+  height: 290px;
   cursor: pointer;
   animation: envelopeFloat 4s ease-in-out infinite;
 }
@@ -107,7 +107,7 @@ body {
 .envelope-back {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, #e8c5c5, #d4a8a8);
+  background: linear-gradient(135deg, #f4dede, #e0b7c1);
   border-radius: 4px;
   box-shadow: 0 8px 32px rgba(168, 103, 126, 0.25);
   overflow: hidden;
@@ -118,7 +118,7 @@ body {
   position: absolute;
   bottom: 0;
   left: 50%;
-  width: 340px;
+  width: 400px;
   background: var(--cream);
   border-radius: 2px;
   padding: 28px 24px;
@@ -130,7 +130,7 @@ body {
 }
 
 .envelope.opening .envelope-letter {
-  transform: translateX(-50%) translateY(-280px);
+  transform: translateX(-50%) translateY(-320px);
 }
 
 .envelope-front {
@@ -144,7 +144,7 @@ body {
 .envelope-pocket-right,
 .envelope-pocket-bottom {
   position: absolute;
-  background: linear-gradient(135deg, #d4a8a8, #c9899f);
+  background: linear-gradient(135deg, #e0b7c1, #c9899f);
 }
 
 .envelope-pocket-left {
@@ -178,7 +178,7 @@ body {
   left: 0;
   width: 100%;
   height: 50%;
-  background: linear-gradient(135deg, #e8c5c5, #d4a8a8);
+  background: linear-gradient(135deg, #faf0ec, #e0b7c1);
   clip-path: polygon(0 0, 100% 0, 50% 100%);
   transform-origin: top center;
   z-index: 4;
@@ -220,7 +220,7 @@ body {
 }
 
 .envelope-hint {
-  margin-top: 40px;
+  margin-bottom: 30px;
   font-family: var(--font-sans);
   font-size: 13px;
   letter-spacing: 3px;
@@ -294,12 +294,12 @@ body {
 
 @media (max-width: 600px) {
   .envelope {
-    width: 300px;
-    height: 200px;
+    width: 340px;
+    height: 230px;
   }
 
   .envelope-letter {
-    width: 280px;
+    width: 320px;
     padding: 20px 16px;
   bottom: 0;
   left: 50%;
@@ -307,7 +307,7 @@ body {
   }
 
   .envelope.opening .envelope-letter {
-    transform: translateX(-50%) translateY(-240px);
+    transform: translateX(-50%) translateY(-270px);
   }
 
   .letter-names {
